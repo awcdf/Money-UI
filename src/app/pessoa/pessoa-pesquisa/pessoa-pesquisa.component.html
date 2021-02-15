@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="p-grid">
+
+    <form autocomplete="off" (ngSubmit)="pesquisar()">
+
+      <div class="p-col-12">
+        <h1>Pessoas</h1>
+      </div>
+
+      <div class="p-col-12 p-fluid">
+        <label>Nome</label>
+        <input pInputText type="text" name="nome" [(ngModel)]="filtro.nome">
+      </div>
+
+      <div class="p-col-12">
+        <button pButton type="submit" label="Pesquisar"></button>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="p-grid">
+    <div class="p-col-12">
+      <div class="container">
+        <p-table [value]="pessoas" [paginator]="true" [rows]="filtro.sizePage" [responsive]="true" styleClass="p-datatable-gridlines" [lazy]="true" [totalRecords]="totalElements" (onLazyLoad)="aoMudarPagina($event)" #tabela>
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Nome</th>
+              <th>Cidade</th>
+              <th>Estado</th>
+              <th>Status</th>
+              <th class="col-data-header"></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-pessoa>
+            <tr>
+              <td> <span class="p-column-title">Nome</span>{{ pessoa.nome }}</td>
+              <td> <span class="p-column-title">Cidade</span>{{ pessoa.endereco.cidade }}</td>
+              <td> <span class="p-column-title">Estado</span>{{ pessoa.endereco.estado }}</td>
+              <td> <a href="javascript:;" (click)="alterarStatus(pessoa)" tooltipPosition="bottom" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar'">{{pessoa.ativo == true ? 'Ativo' : 'Inativo'}}</a></td>
+              <td class="col-acoes">
+                <button pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="bottom" [routerLink]="['/pessoas', pessoa.codigo]" routerLinkActive="router-link-active"  ></button>
+                <button [disabled]="!auth.temPermissao('ROLE_REMOVER_PESSOA')" pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="bottom" (click)="confirmarExcluir(pessoa)"></button>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+            <tr>
+              <td colspan="6">
+                Nenhuma pessoa encontrada!
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+        <div class="buttonFormPessoa">
+          <button pButton label="Nova Pessoa" [routerLink]="['/pessoas/nova']" routerLinkActive="router-link-active" ></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

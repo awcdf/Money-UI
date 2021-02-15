@@ -1,0 +1,81 @@
+<div class="container">
+  <form #formNewPessoa="ngForm" autocomplete="off" (ngSubmit)="salvar(formNewPessoa)">
+    <div class="p-grid">
+      <div class="p-col-12">
+        <h1>{{tipoPessoa == true ? 'Edição' : 'Nova'}} Pessoa</h1>
+      </div>
+
+      <div class="p-col-12 p-fluid">
+        <label>Nome</label>
+        <input pInputText type="text" name="nome" required minlength="3" ngModel #nome="ngModel" [(ngModel)]="pessoa.nome">
+        <div>
+          <app-message [control]='nome' error='required' text='Informe o nome'></app-message>
+          <app-message [control]='nome' error='minlength' text='Informe no minimo {{nome.errors?.minlength?.requiredLength}} caracteres'></app-message>
+        </div>
+      </div>
+
+      <div class="p-col-12 p-md-9 p-fluid">
+        <label>Logradouro</label>
+        <input pInputText type="text" name="logradouro" required minlength="3" ngModel #logradouro="ngModel" [(ngModel)]="pessoa.endereco.logradouro">
+        <div>
+          <app-message [control]='logradouro' error='required' text='Informe o logradouro'></app-message>
+          <app-message [control]='logradouro' error='minlength' text='Informe no minimo {{logradouro.errors?.minlength?.requiredLength}} caracteres'></app-message>
+        </div>
+      </div>
+
+      <div class="p-col-12 p-md-3 p-fluid">
+        <label>Número</label>
+        <input pInputText type="text" name="numero" required ngModel #numero="ngModel" [(ngModel)]="pessoa.endereco.numero">
+        <div>
+          <app-message [control]='numero' error='required' text='Informe o número'></app-message>
+        </div>
+      </div>
+
+      <div class="p-col-12 p-md-4 p-fluid">
+        <label>Complemento</label>
+        <input pInputText type="text" name="complemento" [(ngModel)]="pessoa.endereco.complemento">
+      </div>
+
+      <div class="p-col-12 p-md-4 p-fluid">
+        <label>Bairro</label>
+        <input pInputText type="text" name="bairro" required minlength="3" ngModel #bairro="ngModel" [(ngModel)]="pessoa.endereco.bairro">
+        <div>
+          <app-message [control]='bairro' error='required' text='Informe o bairro'></app-message>
+          <app-message [control]='bairro' error='minlength' text='Informe no minimo {{bairro.errors?.minlength?.requiredLength}} caracteres'></app-message>
+        </div>
+      </div>
+
+      <div class="p-col-12 p-md-4 p-fluid">
+        <label>CEP</label>
+        <p-inputMask mask="99999-999" name="cep" required minlength="8" ngModel #cep="ngModel" [(ngModel)]="pessoa.endereco.cep"></p-inputMask>
+        <div>
+          <app-message [control]='cep' error='required' text='Informe o cep'></app-message>
+        </div>
+      </div>
+
+      <div class="p-col-12 p-md-6 p-fluid">
+        <label>Cidade</label>
+        <input pInputText type="text" name="cidade" required minlength="3" ngModel #cidade="ngModel" [(ngModel)]="pessoa.endereco.cidade">
+        <div>
+          <app-message [control]='cidade' error='required' text='Informe a cidade'></app-message>
+          <app-message [control]='cidade' error='minlength' text='Informe no minimo {{cidade.errors?.minlength?.requiredLength}} caracteres'></app-message>
+        </div>
+      </div>
+
+      <div class="p-col-12 p-md-6 p-fluid">
+        <label>Estado</label>
+        <input pInputText type="text" name="estado" required minlength="3" ngModel #estado="ngModel" [(ngModel)]="pessoa.endereco.estado">
+        <div>
+          <app-message [control]='estado' error='required' text='Informe o estado'></app-message>
+          <app-message [control]='estado' error='minlength' text='Informe no minimo {{estado.errors?.minlength?.requiredLength}} caracteres'></app-message>
+        </div>
+      </div>
+
+      <div class="p-col-12">
+        <button pButton type="submit" label="Salvar" [disabled]="formNewPessoa.invalid"></button>
+        <button pButton type="button" label="Novo" class="p-button-info" (click)="novo(formNewPessoa)"></button>
+        <a [routerLink]="['/pessoas']" routerLinkActive="router-link-active" >Voltar para pesquisa</a>
+      </div>
+    </div>
+  </form>
+</div>
