@@ -26,7 +26,7 @@ export function jwtTokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: jwtTokenGetter,
-        allowedDomains: ['localhost:8080'],
+        allowedDomains: ['https://wendelmoney-api.herokuapp.com'],
         disallowedRoutes: [`${environment.apiUrl}/oauth/token`]
       }
     })
