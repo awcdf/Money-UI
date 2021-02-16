@@ -1,5 +1,11 @@
 # MoneyUI
+* FrontAnd Aplication
+* Angular 11
+* https://wendelmoney-angular.herokuapp.com/
+* integration with MoneyApi github project
+* Tool: VsCode, Python HTML Server, Git Bash, PowerShell
 
+## Inf
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.7.
 
 ## Development server
