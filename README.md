@@ -4,6 +4,9 @@
 * https://wendelmoney-angular.herokuapp.com/
 * integration with MoneyApi github project
 * Tool: VsCode, Python HTML Server, Git Bash, PowerShell
+# Demo
+Login: admin@admin.com | Senha: admin
+Login: maria@maria.com | Senha: maria
 
 ## Inf
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.7.
