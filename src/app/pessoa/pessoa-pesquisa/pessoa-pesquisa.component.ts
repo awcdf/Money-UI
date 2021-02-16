@@ -39,8 +39,7 @@ export class PessoaPesquisaComponent implements OnInit {
     .then(response => {
       this.totalElements = response.totalElements,
       this.totalPages = response.totalPages,
-      this.pessoas = response.content,
-      console.log(response)
+      this.pessoas = response.content
     }).catch(erro => this.errorHandlerService.handler(erro));
   }
 
